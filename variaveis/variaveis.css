@@ -1,0 +1,31 @@
+:root {
+    --color-primary: #1f3c3b;
+    --color-btn-hover-green: #45a049;
+    --color-btn-delete-hover: #cf6969;
+    --backgrounds: #fff;
+    --shadowBoxes: 0 0 10px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+    --backgroundBody: #eff7f4;
+    --positive-flash-message-color: #1c31a5;
+    --negative-flash-message-color: darkRed;
+}
+
+:root {
+    /* Definindo a família da fonte como variável */
+    --font-family-parkinsans: 'Parkinsans', sans-serif;
+    /* Definindo os pesos da fonte como variáveis */
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+}
+
+:root{
+    --font-size-small: 0.700rem;
+    --font-size-standard: 1rem;
+    --font-size-medium: 1.10rem;
+    --font-size-large: 1.15rem;
+    --font-size-xlarge: 1.20rem;
+}

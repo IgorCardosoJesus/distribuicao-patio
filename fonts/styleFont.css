@@ -1,0 +1,91 @@
+/* Importando os arquivos de variáveis e fontes */
+@import '../variaveis/variaveis.css';
+@import './fonts.css';
+
+
+/* Exemplos de uso das variáveis */
+body {
+    font-family: var(--font-family-parkinsans);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-standard);
+}
+
+h1, h2, h3 {
+    font-weight: var(--font-weight-bold);
+}
+
+h1{
+    font-size: 2.5rem;
+}
+
+h2{
+    font-size: 2.25rem;
+}
+
+h3{
+    font-size: 2.0rem;
+}
+
+h4{
+    font-size: 1.75rem;
+}
+
+h5{
+    font-size: 1.5rem;
+}
+
+h6{
+    font-size: 1.25rem;
+}
+
+.littleFont{
+    font-size: var(--font-size-small);
+}
+
+.mediumFont{
+    font-size: var(--font-size-medium);
+}
+.standartFont{
+    font-size: var(--font-size-standard);
+}
+
+.largeFont{
+    font-size: var(--font-size-large);
+}
+.xlargeFont{
+    font-size: var(--font-size-xlarge);
+}
+
+/*---------------------*/
+
+.text-light {
+    font-weight: var(--font-weight-light);
+}
+
+.text-medium {
+    font-weight: var(--font-weight-medium);
+}
+
+.text-semibold {
+    font-weight: var(--font-weight-semibold);
+}
+
+.text-bold {
+    font-weight: var(--font-weight-bold);
+}
+
+.text-extrabold {
+    font-weight: var(--font-weight-extrabold);
+}
+
+/* Exemplo de classe para títulos */
+.title {
+    font-family: var(--font-family-parkinsans);
+    font-weight: var(--font-weight-bold);
+}
+
+/* Exemplo de classe para texto de destaque */
+.highlight {
+    font-family: var(--font-family-parkinsans);
+    font-weight: var(--font-weight-semibold);
+}

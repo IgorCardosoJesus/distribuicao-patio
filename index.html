@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribuição do Pátio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container-body">
+    <div class="container">
+        <h1>Calculadora de Distribuição do Pátio</h1>
+
+        <div class="form-group">
+            <label for="patio">Tamanho do Pátio:</label>
+            <input type="number" id="patio" value="55" class="form-control">
+        </div>
+
+        <div id="cias-container">
+            <h2>Companhias</h2>
+            <div class="cias-list" id="cia-list">
+                <!-- Companhias serão adicionadas aqui dinamicamente -->
+            </div>
+
+            <div class="form-group cia-add">
+                <input type="text" id="cia-nome" placeholder="Nome da Cia" class="form-control">
+                <input type="number" id="cia-qtde" placeholder="Quantidade" class="form-control">
+                <button id="add-cia" class="btn btn-add">Adicionar</button>
+            </div>
+        </div>
+
+        <button id="calcular" class="btn btn-primary">Calcular Distribuição</button>
+    </div>
+    <div class="container">
+        <div id="resultado" class="resultado">
+            <h1>Resultado</h1>
+            <div id="resultado-content" class="resultado-content">
+                <!-- Resultados serão exibidos aqui -->
+            </div>
+            <div class="visualization" id="visualization">
+                <!-- Visualização gráfica -->
+            </div>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
