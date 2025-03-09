@@ -2,10 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Valores iniciais
     const ciasExemplo = [
         { nome: 'EM', qtde: 3 },
-        { nome: 'CCAP', qtde: 6 },
-        { nome: 'servico', qtde: 9 },
-        { nome: '1ª Cia', qtde: 6 },
-        { nome: '2ª Cia', qtde: 3 }
+        { nome: 'CCAP', qtde: 3 },
+        { nome: 'Gd Qtl', qtde: 3 },
+        { nome: '1ª Gpto', qtde: 3 },
+        { nome: '2ª Gpto', qtde: 3 }
     ];
 
     const ciasList = document.getElementById('cia-list');
