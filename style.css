@@ -21,7 +21,7 @@ body {
     padding: 2%;
 }
 
-.container-body{
+.container-body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: center;
@@ -155,50 +155,58 @@ label {
     line-height: 1.6;
 }
 
-.visualization {
+#visualization {
+    border: 1px solid #ccc;
     margin-top: 20px;
-    height: 80px;
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    background-color: #f8f8f8;
     position: relative;
-    overflow: hidden;
+    height: 50vh;
+    width: 50%;
 }
 
 .patio-block {
     position: absolute;
-    height: 100%;
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-weight: bold;
-    font-size: 12px;
+    padding: 8px;
+    width: 100%;
+    transition: all 0.2s ease;
+    font-size: 14px;
     overflow: hidden;
-    border-right: 1px solid white;
-    padding: 0 5px;
-    text-align: center;
+    text-overflow: ellipsis;
 }
 
-.patio-vazio {
-    background-color: #cccccc;
+.patio-block:hover {
+    opacity: 0.9;
+    transform: scale(1.01);
+    z-index: 10;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
-
-.patio-cia {
-    background-color: #3f51b5;
+.visus{
+    display: flex;
+    align-items: center;
 }
-
-.patio-espaco {
-    background-color: #ff9800;
+.palanquezada{
+    width: 10%;
+    margin-left: 10%;
+    height: 80px;
+    align-content: center;
+    background-color: #808080;
 }
 
 @media screen and (max-width: 750px) {
-    .container-body{
+    .container-body {
         grid-template-columns: 1fr;
         gap: 10px;
     }
 
-    h1{
+    h1 {
         font-size: 2rem;
     }
 }
