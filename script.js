@@ -2,10 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Valores iniciais
     const ciasExemplo = [
         { nome: 'EM', qtde: 3 },
-        { nome: 'CCAP', qtde: 3 },
-        { nome: 'Gd Qtl', qtde: 3 },
-        { nome: '1ª Gpto', qtde: 3 },
-        { nome: '2ª Gpto', qtde: 3 }
+        { nome: 'CCAP', qtde: 6 },
+        { nome: 'servico', qtde: 9 },
+        { nome: '1ª Cia', qtde: 6 },
+        { nome: '2ª Cia', qtde: 3 }
     ];
 
     const ciasList = document.getElementById('cia-list');
@@ -175,42 +175,55 @@ document.addEventListener('DOMContentLoaded', function() {
         criarVisualizacao(blocos, PATIO);
     }
 
-    // Função para criar a visualização gráfica da distribuição
-    function criarVisualizacao(blocos, tamanhoTotal) {
-        visualization.innerHTML = '';
-
-        // Filter out "vazio" blocks
-        const blocosVisiveis = blocos.filter(bloco => bloco.tipo !== 'vazio');
-
-        // Calculate space taken by visible blocks
-        const espacoVisivel = blocosVisiveis.reduce((total, bloco) => {
-            return total + (bloco.fim - bloco.inicio + 1);
-        }, 0);
-
-        // Render visible blocks with adjusted proportions
-        blocosVisiveis.forEach(bloco => {
-            const elemento = document.createElement('div');
-            elemento.className = `patio-block patio-${bloco.tipo}`;
-
-            // Calculate width based on proportion of visible space
-            const largura = ((bloco.fim - bloco.inicio + 1) / espacoVisivel) * 100;
-
-            // Calculate position based on preceding visible blocks
-            let posicaoAcumulada = 0;
-            for (let i = 0; i < blocosVisiveis.indexOf(bloco); i++) {
-                posicaoAcumulada += (blocosVisiveis[i].fim - blocosVisiveis[i].inicio + 1);
-            }
-            const posicao = (posicaoAcumulada / espacoVisivel) * 100;
-
-            elemento.style.width = `${largura}%`;
-            elemento.style.left = `${posicao}%`;
-
-            // Adicionar texto (se couber)
-            const texto = `${bloco.nome} (${bloco.inicio}-${bloco.fim})`;
-            elemento.title = texto;  // Adicionar como tooltip
-            elemento.textContent = texto;
-
-            visualization.appendChild(elemento);
-        });
-    }
+// Função para criar a visualização gráfica da distribuição - versão vertical simples
+function criarVisualizacao(blocos, tamanhoTotal) {
+    // Limpar qualquer conteúdo anterior
+    visualization.innerHTML = '';
+    
+    // Filter out "vazio" blocks (opcional - você pode decidir se quer mostrar ou não os blocos vazios)
+    const blocosVisiveis = blocos.filter(bloco => bloco.tipo !== 'vazio');
+    
+    // Calculate space taken by visible blocks
+    const espacoVisivel = blocosVisiveis.reduce((total, bloco) => {
+        return total + (bloco.fim - bloco.inicio + 1);
+    }, 0);
+    
+    // Definição de cores para cada tipo de bloco
+    const coresBlocos = {
+        'cia': '#3498db',      // Azul
+        'espaco': '#e74c3c',   // Vermelho
+        'vazio': '#95a5a6'     // Cinza
+    };
+    
+    // Render visible blocks with adjusted proportions
+    blocosVisiveis.forEach(bloco => {
+        const elemento = document.createElement('div');
+        elemento.className = 'patio-block';
+        
+        // Calculate height based on proportion of visible space
+        const altura = ((bloco.fim - bloco.inicio + 1) / espacoVisivel) * 100;
+        
+        // Calculate position based on preceding visible blocks
+        let posicaoAcumulada = 0;
+        for (let i = 0; i < blocosVisiveis.indexOf(bloco); i++) {
+            posicaoAcumulada += (blocosVisiveis[i].fim - blocosVisiveis[i].inicio + 1);
+        }
+        const posicao = (posicaoAcumulada / espacoVisivel) * 100;
+        
+        // Configurar estilos para o bloco
+        elemento.style.height = `${altura}%`;
+        elemento.style.top = `${posicao}%`;
+        elemento.style.backgroundColor = coresBlocos[bloco.tipo] || '#999';
+        
+        // Adicionar dataset para identificação do tipo de bloco
+        elemento.dataset.tipo = bloco.tipo;
+        
+        // Adicionar texto (se couber)
+        const texto = `${bloco.nome} (${bloco.inicio}-${bloco.fim})`;
+        elemento.title = texto;  // Adicionar como tooltip
+        elemento.textContent = texto;
+        
+        visualization.appendChild(elemento);
+    });
+}
 });
