@@ -226,4 +226,8 @@ function criarVisualizacao(blocos, tamanhoTotal) {
         visualization.appendChild(elemento);
     });
 }
+<<<<<<< Updated upstream
 });
+=======
+});
+>>>>>>> Stashed changes
