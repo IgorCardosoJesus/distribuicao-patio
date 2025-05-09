@@ -175,59 +175,55 @@ document.addEventListener('DOMContentLoaded', function() {
         criarVisualizacao(blocos, PATIO);
     }
 
-// Função para criar a visualização gráfica da distribuição - versão vertical simples
-function criarVisualizacao(blocos, tamanhoTotal) {
-    // Limpar qualquer conteúdo anterior
-    visualization.innerHTML = '';
-    
-    // Filter out "vazio" blocks (opcional - você pode decidir se quer mostrar ou não os blocos vazios)
-    const blocosVisiveis = blocos.filter(bloco => bloco.tipo !== 'vazio');
-    
-    // Calculate space taken by visible blocks
-    const espacoVisivel = blocosVisiveis.reduce((total, bloco) => {
-        return total + (bloco.fim - bloco.inicio + 1);
-    }, 0);
-    
-    // Definição de cores para cada tipo de bloco
-    const coresBlocos = {
-        'cia': '#3498db',      // Azul
-        'espaco': '#e74c3c',   // Vermelho
-        'vazio': '#95a5a6'     // Cinza
-    };
-    
-    // Render visible blocks with adjusted proportions
-    blocosVisiveis.forEach(bloco => {
-        const elemento = document.createElement('div');
-        elemento.className = 'patio-block';
+    // Função para criar a visualização gráfica da distribuição - versão vertical simples
+    function criarVisualizacao(blocos, tamanhoTotal) {
+        // Limpar qualquer conteúdo anterior
+        visualization.innerHTML = '';
         
-        // Calculate height based on proportion of visible space
-        const altura = ((bloco.fim - bloco.inicio + 1) / espacoVisivel) * 100;
+        // Filter out "vazio" blocks (opcional - você pode decidir se quer mostrar ou não os blocos vazios)
+        const blocosVisiveis = blocos.filter(bloco => bloco.tipo !== 'vazio');
         
-        // Calculate position based on preceding visible blocks
-        let posicaoAcumulada = 0;
-        for (let i = 0; i < blocosVisiveis.indexOf(bloco); i++) {
-            posicaoAcumulada += (blocosVisiveis[i].fim - blocosVisiveis[i].inicio + 1);
-        }
-        const posicao = (posicaoAcumulada / espacoVisivel) * 100;
+        // Calculate space taken by visible blocks
+        const espacoVisivel = blocosVisiveis.reduce((total, bloco) => {
+            return total + (bloco.fim - bloco.inicio + 1);
+        }, 0);
         
-        // Configurar estilos para o bloco
-        elemento.style.height = `${altura}%`;
-        elemento.style.top = `${posicao}%`;
-        elemento.style.backgroundColor = coresBlocos[bloco.tipo] || '#999';
+        // Definição de cores para cada tipo de bloco
+        const coresBlocos = {
+            'cia': '#3498db',      // Azul
+            'espaco': '#e74c3c',   // Vermelho
+            'vazio': '#95a5a6'     // Cinza
+        };
         
-        // Adicionar dataset para identificação do tipo de bloco
-        elemento.dataset.tipo = bloco.tipo;
-        
-        // Adicionar texto (se couber)
-        const texto = `${bloco.nome} (${bloco.inicio}-${bloco.fim})`;
-        elemento.title = texto;  // Adicionar como tooltip
-        elemento.textContent = texto;
-        
-        visualization.appendChild(elemento);
-    });
-}
-
+        // Render visible blocks with adjusted proportions
+        blocosVisiveis.forEach(bloco => {
+            const elemento = document.createElement('div');
+            elemento.className = 'patio-block';
+            
+            // Calculate height based on proportion of visible space
+            const altura = ((bloco.fim - bloco.inicio + 1) / espacoVisivel) * 100;
+            
+            // Calculate position based on preceding visible blocks
+            let posicaoAcumulada = 0;
+            for (let i = 0; i < blocosVisiveis.indexOf(bloco); i++) {
+                posicaoAcumulada += (blocosVisiveis[i].fim - blocosVisiveis[i].inicio + 1);
+            }
+            const posicao = (posicaoAcumulada / espacoVisivel) * 100;
+            
+            // Configurar estilos para o bloco
+            elemento.style.height = `${altura}%`;
+            elemento.style.top = `${posicao}%`;
+            elemento.style.backgroundColor = coresBlocos[bloco.tipo] || '#999';
+            
+            // Adicionar dataset para identificação do tipo de bloco
+            elemento.dataset.tipo = bloco.tipo;
+            
+            // Adicionar texto (se couber)
+            const texto = `${bloco.nome} (${bloco.inicio}-${bloco.fim})`;
+            elemento.title = texto;  // Adicionar como tooltip
+            elemento.textContent = texto;
+            
+            visualization.appendChild(elemento);
+        });
+    }
 });
-
-});
-
